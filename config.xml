@@ -1,37 +1,50 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.hemel.nexus" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Nexus</name>
-    <description>Nexus Messenger</description>
-    <author email="you@example.com">Hemel</author>
+    <description>Nexus Messenger - Fast & Secure</description>
+    <author email="support@nexus.app">Hemel</author>
     
-    <!-- App Entry Point -->
+    <!-- Local entry point - loads index.html from www/ folder -->
     <content src="index.html" />
     
     <!-- Security & Access Rules -->
     <access origin="*" />
     <allow-navigation href="*" />
-    <allow-navigation href="https://hemel24-massanger.hf.space/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
     
-    <!-- WebView Fixes for Local Files & Hugging Face WebView -->
-    <preference name="scheme" value="file" />
+    <!-- WebView Configuration -->
     <preference name="AndroidInsecureFileModeEnabled" value="true" />
     <preference name="MixedContentMode" value="0" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="24" />
     <preference name="android-targetSdkVersion" value="36" />
+    <preference name="android-compileSdkVersion" value="36" />
     
-    <!-- Disable Unwanted Splash Screens -->
+    <!-- Splash Screen -->
     <preference name="SplashScreenDelay" value="0" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="FadeSplashScreen" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
-
-    <!-- Android Platform Specific Configurations -->
+    
+    <!-- Status Bar -->
+    <preference name="StatusBarStyle" value="blacktranslucent" />
+    <preference name="StatusBarBackgroundColor" value="#0F172A" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    
+    <!-- Network Settings -->
+    <preference name="LoadUrlTimeoutValue" value="70000" />
+    <preference name="AndroidXEnabled" value="true" />
+    
+    <!-- Android Platform Specific -->
     <platform name="android">
         <allow-intent href="market:*" />
         
+        <!-- Permissions -->
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest">
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.CAMERA" />
@@ -40,11 +53,16 @@
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+            <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+            <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
             <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
             <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
             <uses-permission android:name="android.permission.WAKE_LOCK" />
             <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
         </edit-config>
+        
+        <preference name="BackgroundColor" value="0xff0f172a" />
     </platform>
 </widget>
-          
